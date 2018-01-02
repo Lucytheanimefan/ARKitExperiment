@@ -49,7 +49,7 @@ class ARViewController: UIViewController {
         // Add the SCNDebugOptions options
         // showConstraints, showLightExtents are SCNDebugOptions
         // showFeaturePoints and showWorldOrigin are ARSCNDebugOptions
-        sceneView.debugOptions  = [SCNDebugOptions.showConstraints, SCNDebugOptions.showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        //sceneView.debugOptions  = [SCNDebugOptions.showConstraints, SCNDebugOptions.showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         //shows fps rate
         sceneView.showsStatistics = true

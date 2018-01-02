@@ -23,8 +23,6 @@ class VirtualPlane: SCNNode {
         // initialize anchor and geometry, set color for plane
         self.anchor = anchor
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
-        let material = initializePlaneMaterial()
-        self.planeGeometry!.materials = [material]
         
         // create the SceneKit plane node. As planes in SceneKit are vertical, we need to initialize the y coordinate to 0, use the z coordinate,
         // and rotate it 90º.
@@ -39,13 +37,20 @@ class VirtualPlane: SCNNode {
         self.addChildNode(planeNode)
     }
     
+    
     /**
      * Creates and initializes the material for our plane, a semi-transparent gray area.
      */
-    func initializePlaneMaterial(alpha:Float = 0.5) -> SCNMaterial {
+    func initializePlaneMaterial(alpha:Float = 0) -> SCNMaterial {
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.white.withAlphaComponent(CGFloat(alpha))
         return material
+    }
+    
+    func setPlaneMaterial(imageName:String){
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: imageName)
+        self.planeGeometry!.materials = [material]
     }
     
     /**

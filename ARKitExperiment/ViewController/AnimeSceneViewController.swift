@@ -63,7 +63,10 @@ class AnimeSceneViewController: ARViewController {
             
             
             newNode.position = newLocation
-            newNode.position.y *= 2
+            
+            // Deal with offset since centered
+            let height = newNode.boundingBox.max.y - newNode.boundingBox.min.y
+            newNode.position.y += height/2
             sceneView.scene.rootNode.addChildNode(newNode)
             
             
@@ -77,6 +80,7 @@ extension AnimeSceneViewController: ARSCNViewDelegate{
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let arPlaneAnchor = anchor as? ARPlaneAnchor{
             let plane = VirtualPlane(anchor: arPlaneAnchor)
+            plane.setPlaneMaterial(imageName: "Hardwood")
             self.planes[arPlaneAnchor.identifier] = plane
             node.addChildNode(plane)
         }
