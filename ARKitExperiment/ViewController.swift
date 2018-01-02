@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     }
     
     func createBoxNode(x: Float = 0, y: Float = 0, z: Float = -0.2, width:CGFloat = 0.1, height:CGFloat = 0.1, length:CGFloat = 0.1, layer:CALayer?){
-        let box = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+        let box = SCNBox(width: width, height: height, length: length, chamferRadius: 0.5)
         if (layer != nil)
         {
             box.firstMaterial?.diffuse.contents = layer
@@ -115,10 +115,19 @@ class ViewController: UIViewController {
             if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
                 if (self.myAnimeList.count > 0){
                     let anime = self.myAnimeList.removeFirst()
+                    
                     let layer = textLayer(title: anime["anime_title"] as! String)
                     let translation = hitTestResultWithFeaturePoints.worldTransform.translation
                     
-                    createBoxNode(x: translation.x, y: translation.y, z: translation.z, /*width: <#T##CGFloat#>, height: <#T##CGFloat#>, length: <#T##CGFloat#>,*/ layer: layer)
+                    if let score = anime["score"] as? Int
+                    {
+                        let floatScore = CGFloat(Float(score) * 0.050)
+                        createBoxNode(x: translation.x, y: translation.y, z: translation.z, width: floatScore, height: floatScore, length: floatScore, layer: layer)
+                    }
+                    else
+                    {
+                        createBoxNode(x: translation.x, y: translation.y, z: translation.z, layer: layer)
+                    }
                 }
             }
             return
