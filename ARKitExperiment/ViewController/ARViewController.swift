@@ -87,6 +87,30 @@ class ARViewController: UIViewController {
         boxNode.geometry = box
         return boxNode
     }
+    
+    func stopPlaneDetection(){
+        if let configuration = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
+        {
+            configuration.planeDetection = []
+            self.sceneView.session.run(configuration)
+        }
+    }
+    
+    // want to shine it down so rotate 90deg around the
+    // x-axis to point it down
+    func insertSpotlight(position:SCNVector3){
+        let spotlight = SCNLight()
+        spotlight.type = .spot
+        spotlight.spotInnerAngle = 45
+        spotlight.spotOuterAngle = 45
+        
+        let node = SCNNode()
+        node.light = spotlight
+        node.position = position
+        
+        node.eulerAngles = SCNVector3Make(Float(-Double.pi/2), 0, 0)
+        self.sceneView.scene.rootNode.addChildNode(node)
+    }
 
     
 
