@@ -20,7 +20,7 @@ class ViewController: ARViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sceneView.delegate = self
+
         generateList()
         sceneSetup()
         //addBox()

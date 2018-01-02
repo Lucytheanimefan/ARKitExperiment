@@ -42,9 +42,9 @@ class VirtualPlane: SCNNode {
     /**
      * Creates and initializes the material for our plane, a semi-transparent gray area.
      */
-    func initializePlaneMaterial() -> SCNMaterial {
+    func initializePlaneMaterial(alpha:Float = 0.5) -> SCNMaterial {
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.white.withAlphaComponent(0.50)
+        material.diffuse.contents = UIColor.white.withAlphaComponent(CGFloat(alpha))
         return material
     }
     
