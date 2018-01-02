@@ -16,6 +16,7 @@
 		7C8666491FFB3000003022D1 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; };
 		7C86664A1FFB301C003022D1 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; };
 		7C86664B1FFB301C003022D1 /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C8666501FFC220A003022D1 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86664F1FFC220A003022D1 /* VirtualPlane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		7C8666331FFAEF1B003022D1 /* ARKitExperimentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitExperimentTests.swift; sourceTree = "<group>"; };
 		7C8666351FFAEF1B003022D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
+		7C86664F1FFC220A003022D1 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				7C8666251FFAEF1A003022D1 /* Assets.xcassets */,
 				7C8666271FFAEF1A003022D1 /* LaunchScreen.storyboard */,
 				7C86662A1FFAEF1B003022D1 /* Info.plist */,
+				7C86664F1FFC220A003022D1 /* VirtualPlane.swift */,
 			);
 			path = ARKitExperiment;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				7C8666211FFAEF1A003022D1 /* ViewController.swift in Sources */,
 				7C86661F1FFAEF1A003022D1 /* AppDelegate.swift in Sources */,
+				7C8666501FFC220A003022D1 /* VirtualPlane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

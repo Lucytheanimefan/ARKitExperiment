@@ -17,15 +17,17 @@ class ViewController: UIViewController {
     
     var myAnimeList:[[String:Any]]!
     
+    var planes:[UUID: VirtualPlane]! = [UUID: VirtualPlane]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.sceneView.delegate = self
         generateList()
         sceneSetup()
         //addBox()
         addTapGestureToSceneView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,6 +36,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
     
@@ -50,7 +53,11 @@ class ViewController: UIViewController {
         lightNode.light = light
         lightNode.position = SCNVector3(x: 1.5, y: 1.5, z: 1.5)
         
+        let scene = SCNScene()
+        
+        sceneView.scene = scene
         sceneView.scene.rootNode.addChildNode(lightNode)
+        
     }
     
     func addBox(x: Float = 0, y: Float = 0, z: Float = -0.2){
@@ -67,8 +74,8 @@ class ViewController: UIViewController {
         let boxNode = SCNNode()
         boxNode.geometry = box
         boxNode.position = SCNVector3Make(x, y, z)
-       // return boxNode
-    sceneView.scene.rootNode.addChildNode(boxNode)
+        // return boxNode
+        sceneView.scene.rootNode.addChildNode(boxNode)
     }
     
     func textLayer(title:String) -> CALayer{
@@ -100,7 +107,7 @@ class ViewController: UIViewController {
         sema.wait()
         
     }
-
+    
     func addTapGestureToSceneView(){
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -143,4 +150,31 @@ extension float4x4 {
         let translation = self.columns.3
         return float3(translation.x, translation.y, translation.z)
     }
+}
+
+extension ViewController: ARSCNViewDelegate{
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if let arPlaneAnchor = anchor as? ARPlaneAnchor{
+            let plane = VirtualPlane(anchor: arPlaneAnchor)
+            self.planes[arPlaneAnchor.identifier] = plane
+            node.addChildNode(plane)
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if let arPlaneAnchor = anchor as? ARPlaneAnchor, let plane = self.planes[arPlaneAnchor.identifier]{
+            plane.updateWithNewAnchor(arPlaneAnchor)
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        if let arPlaneAnchor = anchor as? ARPlaneAnchor, let index = planes.index(forKey: arPlaneAnchor.identifier){
+            planes.remove(at: index)
+        }
+    }
+    
+    
+    
+    
 }
