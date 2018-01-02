@@ -10,14 +10,13 @@ import UIKit
 import ARKit
 import AnimeManager
 
-class ViewController: UIViewController {
-    @IBOutlet weak var sceneView: ARSCNView!
+class ViewController: ARViewController {
+    
     
     let MAL = MyAnimeList(username: "Silent_Muse", password: nil)
     
     var myAnimeList:[[String:Any]]!
     
-    var planes:[UUID: VirtualPlane]! = [UUID: VirtualPlane]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +30,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        sceneView.session.pause()
     }
     
     func sceneSetup(){
@@ -124,6 +111,8 @@ class ViewController: UIViewController {
                     let anime = self.myAnimeList.removeFirst()
                     
                     let layer = textLayer(title: anime["anime_title"] as! String)
+                    
+                    //anime_image_path
                     let translation = hitTestResultWithFeaturePoints.worldTransform.translation
                     
                     if let score = anime["score"] as? Int

@@ -17,6 +17,8 @@
 		7C86664A1FFB301C003022D1 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; };
 		7C86664B1FFB301C003022D1 /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C8666501FFC220A003022D1 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86664F1FFC220A003022D1 /* VirtualPlane.swift */; };
+		7C8666531FFC2DFD003022D1 /* AnimeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666521FFC2DFD003022D1 /* AnimeSceneViewController.swift */; };
+		7C8666551FFC2EA2003022D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666541FFC2EA2003022D1 /* ARViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		7C8666351FFAEF1B003022D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
 		7C86664F1FFC220A003022D1 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		7C8666521FFC2DFD003022D1 /* AnimeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSceneViewController.swift; sourceTree = "<group>"; };
+		7C8666541FFC2EA2003022D1 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +126,8 @@
 		7C86661D1FFAEF1A003022D1 /* ARKitExperiment */ = {
 			isa = PBXGroup;
 			children = (
+				7C8666511FFC2DD3003022D1 /* ViewController */,
 				7C86661E1FFAEF1A003022D1 /* AppDelegate.swift */,
-				7C8666201FFAEF1A003022D1 /* ViewController.swift */,
 				7C8666221FFAEF1A003022D1 /* Main.storyboard */,
 				7C8666251FFAEF1A003022D1 /* Assets.xcassets */,
 				7C8666271FFAEF1A003022D1 /* LaunchScreen.storyboard */,
@@ -156,6 +160,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C8666511FFC2DD3003022D1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C8666201FFAEF1A003022D1 /* ViewController.swift */,
+				7C8666521FFC2DFD003022D1 /* AnimeSceneViewController.swift */,
+				7C8666541FFC2EA2003022D1 /* ARViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C8666531FFC2DFD003022D1 /* AnimeSceneViewController.swift in Sources */,
 				7C8666211FFAEF1A003022D1 /* ViewController.swift in Sources */,
 				7C86661F1FFAEF1A003022D1 /* AppDelegate.swift in Sources */,
 				7C8666501FFC220A003022D1 /* VirtualPlane.swift in Sources */,
+				7C8666551FFC2EA2003022D1 /* ARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
