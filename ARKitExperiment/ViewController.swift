@@ -8,14 +8,21 @@
 
 import UIKit
 import ARKit
+import AnimeManager
 
 class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     
+    let MAL = MyAnimeList(username: "Silent_Muse", password: nil)
+    
+    var myAnimeList:[[String:Any]]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addBox()
+        generateList()
+        sceneSetup()
+        //addBox()
         addTapGestureToSceneView()
     }
 
@@ -35,14 +42,63 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    func addBox(x: Float = 0, y: Float = 0, z: Float = -0.2){
-        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+    func sceneSetup(){
         
+        let light = SCNLight()
+        light.type = SCNLight.LightType.omni
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3(x: 1.5, y: 1.5, z: 1.5)
+        
+        sceneView.scene.rootNode.addChildNode(lightNode)
+    }
+    
+    func addBox(x: Float = 0, y: Float = 0, z: Float = -0.2){
+        createBoxNode(x: x, y: y, z: z, layer: nil)
+        //sceneView.scene.rootNode.addChildNode(boxNode)
+    }
+    
+    func createBoxNode(x: Float = 0, y: Float = 0, z: Float = -0.2, width:CGFloat = 0.1, height:CGFloat = 0.1, length:CGFloat = 0.1, layer:CALayer?){
+        let box = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+        if (layer != nil)
+        {
+            box.firstMaterial?.diffuse.contents = layer
+        }
         let boxNode = SCNNode()
         boxNode.geometry = box
         boxNode.position = SCNVector3Make(x, y, z)
+       // return boxNode
+    sceneView.scene.rootNode.addChildNode(boxNode)
+    }
+    
+    func textLayer(title:String) -> CALayer{
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        layer.backgroundColor = UIColor.orange.cgColor
         
-        sceneView.scene.rootNode.addChildNode(boxNode)
+        let textLayer = CATextLayer()
+        textLayer.frame = layer.bounds
+        textLayer.fontSize = 12
+        textLayer.string = title
+        textLayer.alignmentMode = kCAAlignmentLeft
+        textLayer.foregroundColor = UIColor.green.cgColor
+        textLayer.display()
+        layer.addSublayer(textLayer)
+        
+        return layer
+    }
+    
+    func generateList() {
+        let sema = DispatchSemaphore(value: 0)
+        MAL.getAnimeList(status: .all, completion: { (animes) in
+            self.myAnimeList = animes
+            sema.signal()
+        }) { (error) in
+            print(error)
+            sema.signal()
+        }
+        sema.wait()
+        
     }
 
     func addTapGestureToSceneView(){
@@ -57,15 +113,20 @@ class ViewController: UIViewController {
             let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
             
             if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
-                let translation = hitTestResultWithFeaturePoints.worldTransform.translation
-                addBox(x: translation.x, y: translation.y, z: translation.z)
+                if (self.myAnimeList.count > 0){
+                    let anime = self.myAnimeList.removeFirst()
+                    let layer = textLayer(title: anime["anime_title"] as! String)
+                    let translation = hitTestResultWithFeaturePoints.worldTransform.translation
+                    
+                    createBoxNode(x: translation.x, y: translation.y, z: translation.z, /*width: <#T##CGFloat#>, height: <#T##CGFloat#>, length: <#T##CGFloat#>,*/ layer: layer)
+                }
             }
             return
             
         }
         node.removeFromParentNode()
     }
-
+    
 }
 
 extension float4x4 {

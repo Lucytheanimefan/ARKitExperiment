@@ -13,6 +13,9 @@
 		7C8666261FFAEF1A003022D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8666251FFAEF1A003022D1 /* Assets.xcassets */; };
 		7C8666291FFAEF1A003022D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8666271FFAEF1A003022D1 /* LaunchScreen.storyboard */; };
 		7C8666341FFAEF1B003022D1 /* ARKitExperimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666331FFAEF1B003022D1 /* ARKitExperimentTests.swift */; };
+		7C8666491FFB3000003022D1 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; };
+		7C86664A1FFB301C003022D1 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; };
+		7C86664B1FFB301C003022D1 /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8666451FFB2FF4003022D1 /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +26,42 @@
 			remoteGlobalIDString = 7C86661A1FFAEF1A003022D1;
 			remoteInfo = ARKitExperiment;
 		};
+		7C8666441FFB2FF4003022D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C66B1D61FCDF0C80016FACD;
+			remoteInfo = AnimeManager;
+		};
+		7C8666461FFB2FF4003022D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C66B1DF1FCDF0C90016FACD;
+			remoteInfo = AnimeManagerTests;
+		};
+		7C86664C1FFB301C003022D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C66B1D51FCDF0C80016FACD;
+			remoteInfo = AnimeManager;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C86664E1FFB301C003022D1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C86664B1FFB301C003022D1 /* AnimeManager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7C86661B1FFAEF1A003022D1 /* ARKitExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +74,7 @@
 		7C86662F1FFAEF1B003022D1 /* ARKitExperimentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARKitExperimentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8666331FFAEF1B003022D1 /* ARKitExperimentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitExperimentTests.swift; sourceTree = "<group>"; };
 		7C8666351FFAEF1B003022D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C8666491FFB3000003022D1 /* AnimeManager.framework in Frameworks */,
+				7C86664A1FFB301C003022D1 /* AnimeManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +100,11 @@
 		7C8666121FFAEF1A003022D1 = {
 			isa = PBXGroup;
 			children = (
+				7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */,
 				7C86661D1FFAEF1A003022D1 /* ARKitExperiment */,
 				7C8666321FFAEF1B003022D1 /* ARKitExperimentTests */,
 				7C86661C1FFAEF1A003022D1 /* Products */,
+				7C8666481FFB3000003022D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +139,22 @@
 			path = ARKitExperimentTests;
 			sourceTree = "<group>";
 		};
+		7C86663F1FFB2FF4003022D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C8666451FFB2FF4003022D1 /* AnimeManager.framework */,
+				7C8666471FFB2FF4003022D1 /* AnimeManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C8666481FFB3000003022D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,10 +165,12 @@
 				7C8666171FFAEF1A003022D1 /* Sources */,
 				7C8666181FFAEF1A003022D1 /* Frameworks */,
 				7C8666191FFAEF1A003022D1 /* Resources */,
+				7C86664E1FFB301C003022D1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7C86664D1FFB301C003022D1 /* PBXTargetDependency */,
 			);
 			name = ARKitExperiment;
 			productName = ARKitExperiment;
@@ -166,6 +227,12 @@
 			mainGroup = 7C8666121FFAEF1A003022D1;
 			productRefGroup = 7C86661C1FFAEF1A003022D1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7C86663F1FFB2FF4003022D1 /* Products */;
+					ProjectRef = 7C86663E1FFB2FF4003022D1 /* AnimeManager.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7C86661A1FFAEF1A003022D1 /* ARKitExperiment */,
@@ -173,6 +240,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7C8666451FFB2FF4003022D1 /* AnimeManager.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnimeManager.framework;
+			remoteRef = 7C8666441FFB2FF4003022D1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7C8666471FFB2FF4003022D1 /* AnimeManagerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AnimeManagerTests.xctest;
+			remoteRef = 7C8666461FFB2FF4003022D1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7C8666191FFAEF1A003022D1 /* Resources */ = {
@@ -219,6 +303,11 @@
 			isa = PBXTargetDependency;
 			target = 7C86661A1FFAEF1A003022D1 /* ARKitExperiment */;
 			targetProxy = 7C8666301FFAEF1B003022D1 /* PBXContainerItemProxy */;
+		};
+		7C86664D1FFB301C003022D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AnimeManager;
+			targetProxy = 7C86664C1FFB301C003022D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -352,6 +441,7 @@
 		7C8666391FFAEF1B003022D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
@@ -367,6 +457,7 @@
 		7C86663A1FFAEF1B003022D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
